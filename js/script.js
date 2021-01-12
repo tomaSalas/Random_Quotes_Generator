@@ -113,7 +113,7 @@ function init() {
   randomBackGroundColor();
 
 }
-// changes the quote automatically
+// changes the quote automatically https://developer.mozilla.org/
 setInterval(function(){ init(); }, 8000);
 
 
