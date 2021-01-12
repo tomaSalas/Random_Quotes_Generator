@@ -11,59 +11,9 @@ project 1 - A Random Quote Generator
  * `quotes` array 
 ***/
 
-const quotes = [
-  {
-      quote: "Life is what happens when you're busy making other plans.",
-      source: "John Lennon",
-      citation:"https://blog.hubspot.com/sales/famous-quotes",
-      year:"1970",
-  },
-  
-  {
-      quote: "Always remember that you are absolutely unique. Just like everyone else.",
-      source: "Margaret Mead",
-      citation:"https://blog.hubspot.com/sales/famous-quotes",
-      year:"1960",
-  },
-  
-  {
-      quote: "Tell me and I forget. Teach me and I remember. Involve me and I learn.",
-      source: "Benjamin Franklin",
-      citation:"https://blog.hubspot.com/sales/famous-quotes",
-      year:"1785",
-  },
-  
-  {
-      quote: "When you reach the end of your rope, tie a knot in it and hang on.",
-      source: "Franklin D. Roosevelt",
-      citation:"https://blog.hubspot.com/sales/famous-quotes",
-      year:"1944",
-  },
-  
-  {
-      quote: "If you really look closely, most overnight successes took a long time.",
-      source: "Steve Jobs",
-      citation:"https://blog.hubspot.com/sales/famous-quotes",
-      year:"2010",
-  },
+//  changed to its own file for other developers to work with the data
 
-  {
-    quote: "If you really look closely, most overnight successes took a long time.",
-    source: "Steve Jobs",
-    citation:"",
-    year:"2010",
-  },
-
-  {
-    quote: "If you really look closely, most overnight successes took a long time.",
-    source: "Steve Jobs",
-    citation:"https://blog.hubspot.com/sales/famous-quotes",
-    year:"",
-  },
-  
-  
-  ];
-
+// var html to hold content diplay in the document 
 let html = ``;
 
 
@@ -71,19 +21,35 @@ let html = ``;
  * `getRandomQuote` function
 ***/
 
+
 function getRandomInt(arr) {
-  //gets random number
+  //func gets a random number
   return Math.floor(Math.random() * Math.floor(arr.length));
   
 }
 
 function getRandomQuote(arr) {
-  //This func takes an array as input and gets a quote
+  //This func takes an array as input and retuns an object
   let quote = arr[getRandomInt(arr)];
   return quote;
 
 }
 
+/***
+ * `background color` function
+***/
+function randomBackGroundColor () {
+ {
+    var x = Math.floor(Math.random() * 256);
+    var y = Math.floor(Math.random() * 256);
+    var z = Math.floor(Math.random() * 256);
+    var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+
+    document.body.style.background = bgColor;
+  }
+
+
+}
 
 
 
@@ -92,50 +58,61 @@ function getRandomQuote(arr) {
 ***/
 
 function printQuote(obj) {
+  
+  if ( obj["citation"]  === false ) {
 
-  if ( obj.citation  == undefined ) {
-
-    html = `<p class="quote"> ${obj.quote} </p>
-            <p class="source"> ${obj.source}
-            <span class="year"> ${obj.year} </span>
+    html = `<p class="quote"> ${obj["quote"]} </p>
+            <p class="source"> ${obj["source"]}
+            <span class="year"> ${obj["year"]} </span>
             </p>`;
-            console.log("dfdf")
-            console.log(html);
 
     return document.getElementById('quote-box').innerHTML = html;
 
-    } else if (obj.year == undefined) {
+    } else if (obj["year"] === false ) {
       
       html =   `<p class="quote"> ${obj.quote} </p>
                 <p class="source"> ${obj.source}
                 <span class="citation"> ${obj.citation} </span>
                 </p>`;
-                console.log("asdfasdf")
-                console.log(html);
-    
-    return document.getElementById('quote-box').innerHTML = html;
+                
+      return document.getElementById('quote-box').innerHTML = html;
 
+
+    } else if ( obj["tags"] ) { 
+
+      html =  `<p class="quote"> ${obj["quote"]} </p>
+              <p class="source"> ${obj["source"]}
+              <span class="citation"> ${obj["citation"]} </span>
+              <span class="year"> ${obj["year"]} </span>
+              <span class="year"> tags: ${obj["tags"].join(", ")} </span>
+              </p>`;
+
+      return document.getElementById('quote-box').innerHTML = html;
 
     } else {
 
-      html =  `<p class="quote"> ${obj.quote} </p>
-      <p class="source"> ${obj.source}
-      <span class="citation"> ${obj.citation} </span>
-      <span class="year"> ${obj.year} </span>
-      </p>`
-    return document.getElementById('quote-box').innerHTML = html;
+      html =  `<p class="quote"> ${obj["quote"]} </p>
+              <p class="source"> ${obj["source"]}
+              <span class="citation"> ${obj["citation"]} </span>
+              <span class="year"> ${obj["year"]} </span>
+              </p>`;
+      return document.getElementById('quote-box').innerHTML = html;
 
 
     }
 
     
 
-}
+  }  
 
+// func init all the other functions 
 function init() {
   printQuote(getRandomQuote(quotes));
+  randomBackGroundColor();
 
 }
+// changes the quote automatically
+setInterval(function(){ init(); }, 8000);
 
 
 /***
