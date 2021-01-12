@@ -38,6 +38,8 @@ function getRandomQuote(arr) {
 /***
  * `background color` function
 ***/
+
+// got from w3Schools
 function randomBackGroundColor () {
  {
     var x = Math.floor(Math.random() * 256);
@@ -68,7 +70,7 @@ function printQuote(obj) {
 
     return document.getElementById('quote-box').innerHTML = html;
 
-    } else if (obj["year"] === false ) {
+    } else if ( obj["year"] === false ) {
       
       html =   `<p class="quote"> ${obj.quote} </p>
                 <p class="source"> ${obj.source}
@@ -78,13 +80,12 @@ function printQuote(obj) {
       return document.getElementById('quote-box').innerHTML = html;
 
 
-    } else if ( obj["tags"] ) { 
+    } else if ( obj["tags"] === false) { 
 
       html =  `<p class="quote"> ${obj["quote"]} </p>
               <p class="source"> ${obj["source"]}
               <span class="citation"> ${obj["citation"]} </span>
               <span class="year"> ${obj["year"]} </span>
-              <span class="year"> tags: ${obj["tags"].join(", ")} </span>
               </p>`;
 
       return document.getElementById('quote-box').innerHTML = html;
@@ -95,6 +96,7 @@ function printQuote(obj) {
               <p class="source"> ${obj["source"]}
               <span class="citation"> ${obj["citation"]} </span>
               <span class="year"> ${obj["year"]} </span>
+              <span class="year"> tags: ${obj["tags"].join(", ")} </span>
               </p>`;
       return document.getElementById('quote-box').innerHTML = html;
 

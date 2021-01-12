@@ -4,6 +4,7 @@ const quotes = [
         source: "John Lennon",
         citation:"https://blog.hubspot.com/sales/famous-quotes",
         year:"1970",
+        tags: false,
     },
     
     {
@@ -11,6 +12,7 @@ const quotes = [
         source: "Margaret Mead",
         citation:"https://blog.hubspot.com/sales/famous-quotes",
         year:"1960",
+        tags: false,
     },
     
     {
@@ -18,6 +20,7 @@ const quotes = [
         source: "Benjamin Franklin",
         citation:"https://blog.hubspot.com/sales/famous-quotes",
         year:"1785",
+        tags: false,
     },
     
     {
@@ -33,6 +36,7 @@ const quotes = [
         source: "Steve Jobs",
         citation:"https://blog.hubspot.com/sales/famous-quotes",
         year:"2010",
+        tags: false,
     },
   
     {
@@ -40,6 +44,7 @@ const quotes = [
       source: "Steve Jobs",
       citation: false,
       year:"2010",
+      tags: false,
     },
   
     {
@@ -47,6 +52,7 @@ const quotes = [
       source: "D. Rockefeller Jr",
       citation:"https://blog.hubspot.com/sales/famous-quotes",
       year: false,
+      tags: false,
     },
     
     
